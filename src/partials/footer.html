@@ -94,11 +94,13 @@
           </div>
           {% endif %}
           {% if theme_address %}
-          <div class="md-footer-copyright__address__title">
-            Address
-          </div>
           <div class="md-footer-copyright__address">
             {{ theme_address | join("<br>") }}
+          </div>
+          {% endif %}
+          {% if theme_contact %}
+          <div class="md-footer-copyright__contact">
+            <a href="mailto:{{ theme_contact }}">{{ theme_contact }}</a>
           </div>
           {% endif %}
         {% endif %}
@@ -113,7 +115,7 @@
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>, and
-        Sphinx BlueBrain Theme
+        OBI Sphinx Theme
         {% endif %}
       </div>
 

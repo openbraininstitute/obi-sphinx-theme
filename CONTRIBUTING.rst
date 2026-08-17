@@ -35,7 +35,7 @@ following GitHub's guidelines.
 Development Conventions
 -----------------------
 
-Sphinx BlueBrain Theme uses:
+OBI Sphinx Theme uses:
    - Black for formatting code
    - PyLint for linting code
    - PyDocStyle for checking docstrings
@@ -60,3 +60,17 @@ Continuous Integration (CI)
 
 6) The documentation is `built <https://readthedocs.org/projects/obi-sphinx-theme/builds>`_
    on push to the default branch.
+
+Local Read the Docs preview with Podman
+---------------------------------------
+
+Podman can build and serve the documentation using the same Python requirements and
+warnings-as-errors Sphinx configuration used by Read the Docs. From the repository root,
+run:
+
+   ``./scripts/rtd-preview-podman.sh``
+
+Then open http://localhost:8000 (or http://127.0.0.1:8000). Do not use 0.0.0.0 as the browser address;
+it is the container’s listen address. Stop the preview with Ctrl-C. The checkout is mounted
+read-only and the generated documentation is built inside the container, so the host
+working tree is not modified.

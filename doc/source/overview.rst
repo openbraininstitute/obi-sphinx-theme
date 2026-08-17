@@ -1,7 +1,7 @@
 Methodology overview
 ====================
 
-An overview of the methodology applied to create Sphinx BlueBrain Theme is
+An overview of the methodology applied to create the OBI Sphinx Theme is
 given below:
 
 #. User clones ``obi-sphinx-theme`` git repository::

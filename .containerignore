@@ -1,0 +1,13 @@
+.git
+.tox
+.pytest_cache
+__pycache__
+*.py[cod]
+
+build
+dist
+doc/build
+obi_sphinx_theme
+*.egg-info
+
+mkdocs-material

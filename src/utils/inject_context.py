@@ -112,6 +112,16 @@ def build_config(con):
     extra = build_extra(con, lang)
     font = build_font(con)
 
+    logo = con["logo"] or con["theme_logo"]
+    favicon = con["theme_favicon"] or con["favicon"]
+
+    def asset_url(value):
+        if not value:
+            return ""
+        if value.startswith(("http://", "https://", "//")):
+            return value
+        return "assets/" + value
+
     config = {
         "extra_css": [],
         "site_name": con["docstitle"],
@@ -125,12 +135,8 @@ def build_config(con):
             "language": lang,
             # note we use 'assets/' below since the urls use the url filter
             # which will automatically clean up and convert '_static/'
-            "logo": (
-                "assets/" + (con["logo"] or con["theme_logo"])
-                if con["logo"] or con["theme_logo"]
-                else {"icon": con["theme_logo_icon"]}
-            ),
-            "favicon": "assets/" + con["favicon"] if con["favicon"] else "",
+            "logo": asset_url(logo) if logo else {"icon": con["theme_logo_icon"]},
+            "favicon": asset_url(favicon),
         },
         "repo_url": con["theme_repo_url"],
         "repo_name": con["theme_repo_name"],
@@ -174,8 +180,8 @@ def inject_context_variables(app, pagename, templatename, context, doctree):
     # inject new context
     context.update(extra_context)
 
-    # cleanup some defaults which are useful for BBP
-    bbp_context_cleanup(context)
+    # cleanup some defaults which are useful for OBI
+    obi_context_cleanup(context)
 
     # handle adding the page to the search index
     search_index = app.builder.globalcontext.get("search_index", SearchIndexBuilder())
@@ -188,8 +194,8 @@ def inject_context_variables(app, pagename, templatename, context, doctree):
         del context["title"]
 
 
-def bbp_context_cleanup(context):
-    """Cleans up some theme defaults which are required for BBP projects.
+def obi_context_cleanup(context):
+    """Cleans up some theme defaults which are required for OBI projects.
 
     theme.conf variables are all strings, but templates expect
     other types to be passed (lists and dicts).
@@ -197,7 +203,7 @@ def bbp_context_cleanup(context):
     Args:
         context (dict): The context passed to the page template for rendering.
     """
-    # do some convenience updates for BBP defaults
+    # do some convenience updates for OBI defaults
     if isinstance(context["theme_address"], str):
         context["theme_address"] = context["theme_address"].strip().split("\n")
 
@@ -210,9 +216,9 @@ def bbp_context_cleanup(context):
     if "copyright" in context and context["copyright"]:
         logger.warning(
             "you have defined 'copyright' in your conf.py, "
-            "the default Blue Brain project copyright will be used."
+            "the default Open Brain Institute copyright will be used."
         )
 
     context["config"][
         "copyright"
-    ] = f"&copy; Blue Brain Project/EPFL 2005-{datetime.datetime.now().year}. All rights reserved."
+    ] = f"&copy; Open Brain Institute 2005-{datetime.datetime.now().year}. All rights reserved."

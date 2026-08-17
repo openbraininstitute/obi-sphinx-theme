@@ -1,0 +1,20 @@
+FROM docker.io/library/python:3.13-slim-bookworm
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends --yes ca-certificates git \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY doc/requirements_rtd.txt /tmp/doc-requirements.txt
+RUN sed '/^obi-sphinx-theme$/d' /tmp/doc-requirements.txt > /tmp/doc-requirements-local.txt \
+    && python -m pip install --upgrade pip \
+    && python -m pip install --no-cache-dir -r /tmp/doc-requirements-local.txt
+
+COPY scripts/rtd-preview-entrypoint.sh /usr/local/bin/rtd-preview-entrypoint
+RUN chmod +x /usr/local/bin/rtd-preview-entrypoint
+
+EXPOSE 8000
+ENTRYPOINT ["/usr/local/bin/rtd-preview-entrypoint"]

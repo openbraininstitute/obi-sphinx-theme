@@ -315,33 +315,41 @@ allows us to only use the style changes we need unless specifically told not to.
 */
 {% if not theme_use_original_style %}
 
-/* override the theme colour here */
+/* OBI palette and component overrides */
 button[data-md-color-primary="blue"],
 [data-md-color-primary="blue"] .md-header,
-[data-md-color-primary="blue"] .md-hero {
-  background-color: #050A56; }
+[data-md-color-primary="blue"] .md-hero,
+body[data-md-color-primary="blue"] .md-footer-meta {
+  background-color: #002766;
+}
 
 [data-md-color-primary="blue"] .md-typeset a,
 [data-md-color-primary="blue"] .md-nav__link:active,
 [data-md-color-primary="blue"] .md-nav__link--active {
-  color: #0083CB; }
+  color: #002766;
+}
 
-/* based on (5, 10, 86, 1)*0.75 + (0, 0, 0, 0.87)*0.25 */
 @media only screen and (max-width: 59.9375em) {
   [data-md-color-primary="blue"] .md-nav__source {
-    background-color: rgba(4, 8, 65, 0.9675); } }
+    background-color: #001026;
+  }
+}
 
 @media only screen and (max-width: 76.1875em) {
   html [data-md-color-primary="blue"] .md-nav--primary .md-nav__title--site {
-    background-color: #050A56; } }
+    background-color: #002766;
+  }
+}
 
 @media only screen and (min-width: 76.25em) {
   [data-md-color-primary="blue"] .md-tabs {
-    background-color: #050A56; } }
+    background-color: #002766;
+  }
+}
 
-/* accent colors */
 button[data-md-color-accent="blue"] {
-  background-color: #0083CB; }
+  background-color: #389e0d;
+}
 
 [data-md-color-accent="blue"] .md-typeset a:hover,
 [data-md-color-accent="blue"] .md-typeset a:active,
@@ -351,32 +359,47 @@ button[data-md-color-accent="blue"] {
 [data-md-color-accent="blue"] .md-typeset .footnote li:target .footnote-backref,
 [data-md-color-accent="blue"] .md-typeset [id]:hover .headerlink:hover,
 [data-md-color-accent="blue"] .md-typeset [id]:target .headerlink,
-[data-md-color-accent="blue"] .md-typeset [id] .headerlink:focus {
-  color: #0083CB; }
+[data-md-color-accent="blue"] .md-typeset [id] .headerlink:focus,
+[data-md-color-accent="blue"] .md-nav__link:focus,
+[data-md-color-accent="blue"] .md-nav__link:hover,
+html .md-typeset .superfences-tabs > label:hover {
+  color: #389e0d;
+}
 
 [data-md-color-accent="blue"] .md-typeset pre code::-webkit-scrollbar-thumb:hover,
-[data-md-color-accent="blue"] .md-typeset .codehilite pre::-webkit-scrollbar-thumb:hover {
-  background-color: #0083CB; }
-
-[data-md-color-accent="blue"] .md-nav__link:focus,
-[data-md-color-accent="blue"] .md-nav__link:hover {
-  color: #0083CB; }
-
+[data-md-color-accent="blue"] .md-typeset .codehilite pre::-webkit-scrollbar-thumb:hover,
 [data-md-color-accent="blue"] .md-search__scrollwrap::-webkit-scrollbar-thumb:hover,
 [data-md-color-accent="blue"] .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover,
 [data-md-color-accent="blue"] .md-source-file:hover::before {
-  background-color: #0083CB; }
+  background-color: #389e0d;
+}
 
 [data-md-color-accent="blue"] .md-search-result__link[data-md-state="active"],
 [data-md-color-accent="blue"] .md-search-result__link:hover {
-  background-color: rgba(5, 10, 86, 0.1); }
-/* end accent colors */
+  background-color: rgba(0, 39, 102, 0.1);
+}
 
-/* set the logo to the correct size and location if required */
+/* center the logo in the 48px header without changing the table layout */
+.md-header-nav__button.md-logo {
+  display: flex;
+  align-items: center;
+  height: 2.4rem;
+  margin: 0 0.3rem;
+  padding: 0;
+}
+
 .md-header-nav__button.md-logo img {
-  height: 0.8rem;
+  height: 1.25rem;
   width: auto;
-  margin: 0.25rem 0.3rem;
+  margin: 0;
+  filter: brightness(0) invert(1);
+}
+
+/* Material hides the desktop logo through a rule in the inherited stylesheet. */
+@media only screen and (max-width: 76.1875em) {
+  .md-header-nav__button.md-logo {
+    display: none;
+  }
 }
 
 /* fix the logo on mobile devices */
@@ -392,25 +415,15 @@ html .md-nav--primary .md-nav__title--site .md-nav__button {
   background-color: #f2f2f2;
 }*/
 
-/* set the footer nav colors */
-body[data-md-color-primary="blue"] .md-footer-meta {
-  background-color: #050A56;
-}
-
+/* footer navigation and typography */
 body[data-md-color-primary="blue"] .md-footer-nav {
-  background-color: #F2F2F2;
+  background-color: #f5f8fa;
 }
 
-/* fix code block tab hover */
-html .md-typeset .superfences-tabs > label:hover {
-  color: #0083CB;
-}
-
-/* align nav colors with style guide grey */
 .md-typeset h1,
 .md-footer-nav,
 .md-footer-nav__direction {
-  color: #888888;
+  color: #6b7280;
 }
 
 .md-footer-nav__direction {
@@ -419,30 +432,30 @@ html .md-typeset .superfences-tabs > label:hover {
 
 .md-header-nav__title,
 .md-header-nav__prefix {
-  color: #F2F2F2;
+  color: #f5f8fa;
   font-size: 1.2rem;
 }
 
 body .md-nav {
-  color: rgba(5, 10, 86, 0.87); /* #050A56 at 87% alpha */
+  color: #141414;
 }
 
 /* specific style for the header version */
 .md-header-nav__version {
-  color: rgba(242, 242, 242, 0.7);
+  color: rgba(245, 248, 250, 0.7);
   font-size: 0.9rem;
   padding-left: 0.3rem;
 }
 
 /* increase contrast in blue footer */
 .md-footer-copyright {
-  color: #F2F2F2;
+  color: #f5f8fa;
   font-size: 0.7rem;
 }
 
 .md-footer-copyright__highlight,
 html .md-footer-meta.md-typeset a {
-  color: #F2F2F2;
+  color: #f5f8fa;
 }
 
 /* change title style in the copyright */
@@ -456,19 +469,15 @@ html .md-footer-meta.md-typeset a {
   padding-bottom: 0.75rem;
 }
 
-.md-footer-copyright__address__title {
-  font-weight: bold;
-}
-
 .md-footer-copyright__address {
   font-size: 0.7rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0.25rem;
 }
 
 .md-footer-social__title {
   font-size: 0.7rem;
   font-weight: bold;
-  color: #F2F2F2;
+  color: #f5f8fa;
   padding-top: 2.7rem;
 }
 
@@ -481,19 +490,16 @@ html .md-footer-meta.md-typeset a {
   font-size: 1rem;
 }
 
-/* align text color with style guide */
-body, input {
-  color: #333333;
-}
-
-/* align headings with style guide */
+/* align text color with the OBI palette */
+body,
+input,
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
 .md-typeset h4,
 .md-typeset h5,
 .md-typeset h6 {
-  color: #333333;
+  color: #141414;
 }
 
 .md-typeset h1 {
@@ -516,9 +522,6 @@ body, input {
   font-size: 0.7rem;
   text-transform: none;
   font-weight: 700;
-}
-
-.md-typeset h6 {
 }
 
 /* fix search result clipping */

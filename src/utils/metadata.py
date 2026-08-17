@@ -214,17 +214,13 @@ def write_metadata_sphinx(app, exception):  # pylint: disable=unused-argument
     if not metadata:
         return
 
-    # confirm that versions match between metadata and sphinx
-    # if using a distribution for metadata, it will catch the case
-    # that another version of the same package has been imported
-    if os.environ.get("SPHINX_BLUE_BRAIN_THEME_CHECK_VERSIONS", "True").lower() in [
-        "true",
-        "1",
-    ]:
-        assert metadata["version"] == app.config["version"], (
-            f"conf.py version ({app.config['version']}) and metadata version "
-            f"({metadata['version']}) do not match"
-        )
+    # Confirm that versions match between metadata and Sphinx. If using a
+    # distribution for metadata, this catches another version of the same
+    # package being imported.
+    assert metadata["version"] == app.config["version"], (
+        f"conf.py version ({app.config['version']}) and metadata version "
+        f"({metadata['version']}) do not match"
+    )
 
     contributors = metadata.get("contributors", None)
 

@@ -11,7 +11,7 @@ Guide
 Quickstart
 ----------
 
-The Sphinx BlueBrain Theme must be installed from PyPi::
+The OBI Sphinx Theme must be installed from PyPi::
 
    pip install obi-sphinx-theme
 
@@ -55,7 +55,7 @@ This is optional.
 Metadata generation
 -------------------
 
-You can generate required BlueBrain Project metadata from either your python package, or a ``.json`` file.
+You can generate the required theme metadata from either your Python package or a ``.json`` file.
 In order to take advantage of this, specify the either the ``metadata_distribution`` or ``metadata_file``
 variable in the ``html_theme_options`` dict in your ``conf.py``.
 
@@ -106,8 +106,6 @@ directory containing the ``conf.py``. You may override this by providing the ``r
 value in ``html_theme_options``, it should be a path (relative to the ``conf.py``) to the
 ``.git`` folder of the repository.
 
-You can avoid the version checking when building the documentation using the environmental variable
-`SPHINX_BLUE_BRAIN_THEME_CHECK_VERSIONS=false`
 
 
 Sphinx options
@@ -236,4 +234,4 @@ The theme can be configured using the ``html_theme_options`` variable in the
       }
 
 .. ``use_original_style``
-   If set to true, BBP specific style overrides will not be included.
+   If set to true, OBI-specific style overrides will not be included.

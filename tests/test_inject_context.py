@@ -79,7 +79,7 @@ def test_copyright_warning():
     }
 
     with patch("obi_sphinx_theme.utils.inject_context.logger") as mock_logger:
-        inject_context.bbp_context_cleanup(context)
+        inject_context.obi_context_cleanup(context)
         assert mock_logger.warning.call_count == 1
 
 
@@ -88,7 +88,7 @@ def test_copyright_no_warning():
     context = {"theme_address": None, "theme_social": None, "config": {}}
 
     with patch("obi_sphinx_theme.utils.inject_context.logger") as mock_logger:
-        inject_context.bbp_context_cleanup(context)
+        inject_context.obi_context_cleanup(context)
         assert mock_logger.warning.call_count == 0
 
 
@@ -120,13 +120,13 @@ def test_build_extra():
     assert extra["disqus"] is None
 
 
-def test_bbp_cleanup():
+def test_obi_cleanup():
     """
-    Test the BBP specific clean up of context.
+    Test the OBI-specific context cleanup.
     """
 
-    address = """Blue Brain Project
-Geneva"""
+    address = """Open Brain Institute
+Avenue du Tribunal-Fédéral 34, 1005 Lausanne"""
 
     social = """facebook,facebook.com
 linkedin,linkedin.com"""
@@ -137,10 +137,13 @@ linkedin,linkedin.com"""
         "config": {"extra": {"social": None}},
     }
 
-    inject_context.bbp_context_cleanup(context)
+    inject_context.obi_context_cleanup(context)
 
     # check the address
-    assert context["theme_address"] == ["Blue Brain Project", "Geneva"]
+    assert context["theme_address"] == [
+        "Open Brain Institute",
+        "Avenue du Tribunal-Fédéral 34, 1005 Lausanne",
+    ]
 
     # check the social output
     social_result = [
@@ -148,3 +151,36 @@ linkedin,linkedin.com"""
         {"type": "linkedin", "link": "linkedin.com"},
     ]
     assert context["config"]["extra"]["social"] == social_result
+
+
+def test_build_config_asset_urls():
+    """Build local and external logo/favicon URLs without double-prefixing URLs."""
+    context = defaultdict(lambda: None)
+    context.update(
+        {
+            "language": "en",
+            "docstitle": "OBI Sphinx Theme",
+            "theme_logo": "images/obi-logo.svg",
+            "theme_favicon": "https://www.openbraininstitute.org/favicon.ico",
+            "theme_logo_icon": None,
+            "theme_palette_primary": "blue",
+            "theme_palette_accent": "blue",
+            "theme_repo_url": "https://github.com/openbraininstitute/obi-sphinx-theme",
+            "theme_repo_name": "openbraininstitute/obi-sphinx-theme",
+            "theme_logo_url": "https://www.openbraininstitute.org/",
+            "theme_use_google_fonts": False,
+            "pathto": lambda value: f"/{value}",
+            "master_doc": "index",
+        }
+    )
+
+    config = inject_context.build_config(context)
+
+    assert config["theme"]["logo"] == "assets/images/obi-logo.svg"
+    assert (
+        config["theme"]["favicon"] == "https://www.openbraininstitute.org/favicon.ico"
+    )
+
+    context["logo"] = "https://cdn.example.test/obi-logo.svg"
+    config = inject_context.build_config(context)
+    assert config["theme"]["logo"] == "https://cdn.example.test/obi-logo.svg"
