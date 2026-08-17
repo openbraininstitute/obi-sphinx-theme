@@ -1,7 +1,7 @@
 OBI Sphinx Theme
 ================
 
-|build_status| |license| |black| |docs|
+|license| |black|
 
 Introduction
 ------------
@@ -28,8 +28,8 @@ License
 
 The code for the theme is licensed under the MIT License.
 
-The name "Blue Brain Project" and the EPFL logo are property of their respective
-owners and do not fall under the MIT license.
+The name "Blue Brain Project" is property of its respective owner and does not
+fall under the MIT license.
 
 The theme incorporates third party components which are listed below, along with their relevant licenses:
 
@@ -39,8 +39,8 @@ The theme incorporates third party components which are listed below, along with
    Apache License Version 2.0, see `the license <https://github.com/BlueBrain/sphinx-bluebrain-theme/blob/master/src/assets/fonts/open-sans/LICENSE.txt>`__.
 `Titillium Web font <https://fonts.google.com/specimen/Titillium+Web>`__
    Open Font License Version 1.1, see `the license <https://github.com/BlueBrain/sphinx-bluebrain-theme/blob/master/src/assets/fonts/titillium-web/OFL.txt>`__.
-EPFL logo
-   The EPFL logo is copyright EPFL. All rights reserved.
+OBI logo
+   The OBI logo is copyright Open Brain Institute. All rights reserved.
 
 About
 -----
@@ -63,20 +63,14 @@ The development of this software was supported by funding to the Blue Brain Proj
 
 Copyright (c) 2020-2024 Blue Brain Project/EPFL
 
+Copyright (c) 2025-2026 Open Brain Institute
 
-.. |build_status| image:: https://travis-ci.com/openbraininstitute/obi-sphinx-theme.svg?branch=master
-                     :target: https://travis-ci.com/openbraininstitute/obi-sphinx-theme
-                     :alt: Build Status
 
 .. |license| image:: https://img.shields.io/pypi/l/obi-sphinx-theme
-                :target: https://github.com/BlueBrain/sphinx-bluebrain-theme/blob/master/LICENSE.txt
+                :target: https://github.com/openbraininstitute/obi-sphinx-theme/blob/main/LICENSE.txt
 
 .. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
               :target: https://github.com/psf/black
-
-.. |docs| image:: https://readthedocs.org/projects/obi-sphinx-theme/badge/?version=latest
-             :target: https://obi-sphinx-theme.readthedocs.io/
-             :alt: documentation status
 
 .. substitutions
 .. |changelog| replace:: `changelog <CHANGELOG.rst>`__
