@@ -1,12 +1,13 @@
-Sphinx BlueBrain Theme
-======================
+OBI Sphinx Theme
+================
 
 |build_status| |license| |black| |docs|
 
 Introduction
 ------------
 
-Sphinx BlueBrain Theme is the standard Blue Brain Project documentation theme.
+OBI Sphinx Theme is the Open Brain Institute documentation theme, based on the
+Sphinx BlueBrain Theme.
 
 You can view the |changelog| to see what has changed recently.
 
@@ -15,7 +16,7 @@ Installation
 
 You can install the theme using `pip`::
 
-   pip install sphinx-bluebrain-theme
+   pip install obi-sphinx-theme
 
 Usage
 -----
@@ -44,17 +45,16 @@ EPFL logo
 About
 -----
 
-Sphinx BlueBrain Theme is a Sphinx theme based on the excellent *Material for
-MkDocs* theme by Martin Donath (@squidfunk).
+OBI Sphinx Theme is a Sphinx theme based on the Sphinx BlueBrain Theme and the
+excellent *Material for MkDocs* theme by Martin Donath (@squidfunk).
 
-The `original theme <https://github.com/squidfunk/mkdocs-material>`__ is
-licensed under the MIT license and is hosted on GitHub.
-
+The upstream Sphinx BlueBrain Theme is licensed under the MIT license and is
+hosted on `GitHub <https://github.com/BlueBrain/sphinx-bluebrain-theme>`__.
 You can see examples (and the associated ``rst`` source) in the |sample| page.
 
-Sphinx BlueBrain Theme is built through a combination of text replacement rules,
+OBI Sphinx Theme is built through a combination of text replacement rules,
 HTML template overrides, a small amount of additional CSS and Javascript, and
-a python module which injects additional required context.
+a Python module which injects additional required context.
 
 Acknowledgement
 ---------------
@@ -64,18 +64,18 @@ The development of this software was supported by funding to the Blue Brain Proj
 Copyright (c) 2020-2024 Blue Brain Project/EPFL
 
 
-.. |build_status| image:: https://travis-ci.com/BlueBrain/sphinx-bluebrain-theme.svg?branch=master
-                     :target: https://travis-ci.com/BlueBrain/sphinx-bluebrain-theme
+.. |build_status| image:: https://travis-ci.com/openbraininstitute/obi-sphinx-theme.svg?branch=master
+                     :target: https://travis-ci.com/openbraininstitute/obi-sphinx-theme
                      :alt: Build Status
 
-.. |license| image:: https://img.shields.io/pypi/l/sphinx-bluebrain-theme
+.. |license| image:: https://img.shields.io/pypi/l/obi-sphinx-theme
                 :target: https://github.com/BlueBrain/sphinx-bluebrain-theme/blob/master/LICENSE.txt
 
 .. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
               :target: https://github.com/psf/black
 
-.. |docs| image:: https://readthedocs.org/projects/sphinx-bluebrain-theme/badge/?version=latest
-             :target: https://sphinx-bluebrain-theme.readthedocs.io/
+.. |docs| image:: https://readthedocs.org/projects/obi-sphinx-theme/badge/?version=latest
+             :target: https://obi-sphinx-theme.readthedocs.io/
              :alt: documentation status
 
 .. substitutions

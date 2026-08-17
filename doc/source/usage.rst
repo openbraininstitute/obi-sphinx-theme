@@ -13,11 +13,11 @@ Quickstart
 
 The Sphinx BlueBrain Theme must be installed from PyPi::
 
-   pip install sphinx-bluebrain-theme
+   pip install obi-sphinx-theme
 
 You can then use the theme by specifying::
 
-   html_theme = "sphinx-bluebrain-theme"
+   html_theme = "obi-sphinx-theme"
 
 in the :file:`conf.py` for your documentation.
 
@@ -27,7 +27,7 @@ Generating tables of contents
 When structuring your documentation in Sphinx, you generally require multiple
 ``toctree`` commands which define the structure of the documentation.
 
-As ``sphinx-bluebrain-theme`` shows tables of contents (ToC) on each page, you
+As ``obi-sphinx-theme`` shows tables of contents (ToC) on each page, you
 can hide the ToC from the page body by specifying the ``:hidden:`` option::
 
    .. toctree::

@@ -19,7 +19,7 @@ REGRESSION_TEST_PAGENAMES = {"regression"}
 
 # -- Project information -----------------------------------------------------
 
-project = "sphinx-bluebrain-theme"
+project = "obi-sphinx-theme"
 
 # read the docs does not like using the cloned repo as the theme
 # for the documentation build so the version number will be wrong
@@ -32,7 +32,7 @@ if on_rtd:
         root="../..", relative_to=__file__, local_scheme="no-local-version"
     )
 else:
-    version = importlib.metadata.version("sphinx-bluebrain-theme")
+    version = importlib.metadata.version("obi-sphinx-theme")
 
 release = version
 
@@ -60,12 +60,12 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "sphinx-bluebrain-theme"
-html_title = "Sphinx BlueBrain Theme"
+html_theme = "obi-sphinx-theme"
+html_title = "OBI Sphinx Theme"
 html_favicon = "favicon.ico"
 html_theme_options = {
-    "repo_url": "https://github.com/BlueBrain/sphinx-bluebrain-theme/",
-    "repo_name": "BlueBrain/sphinx-bluebrain-theme",
+    "repo_url": "https://github.com/openbraininstitute/obi-sphinx-theme/",
+    "repo_name": "openbraininstitute/obi-sphinx-theme",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

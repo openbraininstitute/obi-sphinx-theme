@@ -4,7 +4,7 @@ search used by mkdocs-material.
 """
 
 import pytest  # pylint: disable=unused-import
-from sphinx_bluebrain_theme.utils import search_builder
+from obi_sphinx_theme.utils import search_builder
 
 
 def test_index_entry():

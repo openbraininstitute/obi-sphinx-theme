@@ -1,4 +1,4 @@
-graft sphinx_bluebrain_theme
+graft obi_sphinx_theme
 
 prune src
 prune mkdocs2sphinx

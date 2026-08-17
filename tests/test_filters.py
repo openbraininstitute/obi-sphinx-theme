@@ -4,7 +4,7 @@ Test for the custom filters.
 
 from sphinx.application import Sphinx
 import pytest  # pylint: disable=unused-import
-from sphinx_bluebrain_theme.utils.filters import add_filters, url_filter
+from obi_sphinx_theme.utils.filters import add_filters, url_filter
 
 
 def test_add_filter():

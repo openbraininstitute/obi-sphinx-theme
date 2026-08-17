@@ -36,7 +36,7 @@ if __name__ == "__main__":
     # this assumes that the mkdocs material theme is in the same directory
     # as this file's parent directory
     SRC_PATH = PWD_PATH / "mkdocs-material" / "material"
-    OUT_PATH = PWD_PATH / "sphinx_bluebrain_theme"
+    OUT_PATH = PWD_PATH / "obi_sphinx_theme"
     copy_source(SRC_PATH, OUT_PATH, _ignore_on_copy)
 
     # convert files from mkdocs to Sphinx

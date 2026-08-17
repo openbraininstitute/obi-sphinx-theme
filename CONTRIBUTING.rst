@@ -7,9 +7,9 @@ Found a bug?
 ------------
 
 If you find a bug in the source code or in using the theme, you can
-`open an issue <https://github.com/BlueBrain/sphinx-bluebrain-theme/issues>`__ on GitHub.
+`open an issue <https://github.com/openbraininstitute/obi-sphinx-theme/issues>`__ on GitHub.
 Even better, you can
-`submit a pull request <https://github.com/BlueBrain/sphinx-bluebrain-theme/pulls>`__
+`submit a pull request <https://github.com/openbraininstitute/obi-sphinx-theme/pulls>`__
 with a fix.
 
 Submission guidelines
@@ -49,7 +49,7 @@ Continuous Integration (CI)
 
 2) Test the changes installing the package
 
-   ``pip3 install 'git+https://github.com/BlueBrain/sphinx-bluebrain-theme.git@<BRANCH_NAME>#egg=sphinx-bluebrain-theme'``
+   ``pip3 install 'git+https://github.com/openbraininstitute/obi-sphinx-theme.git@<BRANCH_NAME>#egg=obi-sphinx-theme'``
 
 3) Amend the necessary items on the PR until the package is working properly.
 
@@ -58,5 +58,5 @@ Continuous Integration (CI)
 5) Then you can tag with a release version vX.Y.Z the merged commit and a release version
    will be produced in pypi.
 
-6) The documentation is `built <https://readthedocs.org/projects/sphinx-bluebrain-theme/builds>`_
+6) The documentation is `built <https://readthedocs.org/projects/obi-sphinx-theme/builds>`_
    on push to the default branch.

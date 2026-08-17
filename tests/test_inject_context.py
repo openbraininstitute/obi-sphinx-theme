@@ -6,7 +6,7 @@ from collections import defaultdict
 
 from unittest.mock import patch
 import pytest  # pylint: disable=unused-import
-from sphinx_bluebrain_theme.utils import inject_context
+from obi_sphinx_theme.utils import inject_context
 
 
 def test_build_adjacent_page():
@@ -78,7 +78,7 @@ def test_copyright_warning():
         "config": {},
     }
 
-    with patch("sphinx_bluebrain_theme.utils.inject_context.logger") as mock_logger:
+    with patch("obi_sphinx_theme.utils.inject_context.logger") as mock_logger:
         inject_context.bbp_context_cleanup(context)
         assert mock_logger.warning.call_count == 1
 
@@ -87,7 +87,7 @@ def test_copyright_no_warning():
     """Test copyright giving no warning when it is not defined."""
     context = {"theme_address": None, "theme_social": None, "config": {}}
 
-    with patch("sphinx_bluebrain_theme.utils.inject_context.logger") as mock_logger:
+    with patch("obi_sphinx_theme.utils.inject_context.logger") as mock_logger:
         inject_context.bbp_context_cleanup(context)
         assert mock_logger.warning.call_count == 0
 

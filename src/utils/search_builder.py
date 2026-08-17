@@ -12,7 +12,7 @@ from html.parser import HTMLParser
 
 from sphinx.util.fileutil import copy_asset_file
 
-from sphinx_bluebrain_theme.utils._importlib import resources as importlib_resources
+from obi_sphinx_theme.utils._importlib import resources as importlib_resources
 
 
 class IndexEntry:
@@ -132,7 +132,7 @@ def copy_search_index_json(app, exc):
     """Create and copy the search_index.json file."""
     if app.builder.format == "html" and not exc:
         output = os.path.join(app.builder.outdir, "_static/search")
-        path = importlib_resources.files("sphinx_bluebrain_theme")
+        path = importlib_resources.files("obi_sphinx_theme")
         with importlib_resources.as_file(
             path / "static/search/search_index.json_t"
         ) as file_:

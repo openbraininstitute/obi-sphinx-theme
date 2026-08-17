@@ -3,7 +3,7 @@ Test nav utils
 """
 
 import pytest  # pylint: disable=unused-import
-from sphinx_bluebrain_theme.utils import navutils
+from obi_sphinx_theme.utils import navutils
 
 
 def test_set_active():

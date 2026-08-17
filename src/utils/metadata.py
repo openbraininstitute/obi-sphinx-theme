@@ -9,7 +9,7 @@ from subprocess import CalledProcessError, check_output
 
 import sphinx.util
 
-from sphinx_bluebrain_theme.utils._importlib import metadata as importlib_metadata
+from obi_sphinx_theme.utils._importlib import metadata as importlib_metadata
 
 logger = sphinx.util.logging.getLogger(__name__)
 

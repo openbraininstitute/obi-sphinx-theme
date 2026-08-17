@@ -4,9 +4,9 @@ Methodology overview
 An overview of the methodology applied to create Sphinx BlueBrain Theme is
 given below:
 
-#. User clones ``sphinx-bluebrain-theme`` git repository::
+#. User clones ``obi-sphinx-theme`` git repository::
 
-      git clone --recursive https://github.com/BlueBrain/sphinx-bluebrain-theme.git
+      git clone --recursive https://github.com/openbraininstitute/obi-sphinx-theme.git
 
 #. User runs ``tox`` tox environment::
 

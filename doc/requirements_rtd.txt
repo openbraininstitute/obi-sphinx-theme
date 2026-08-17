@@ -1,2 +1,2 @@
 setuptools_scm
-sphinx-bluebrain-theme
+obi-sphinx-theme

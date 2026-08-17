@@ -6,8 +6,8 @@ from collections import defaultdict
 import sphinx
 import sphinx.util.logging
 
-from sphinx_bluebrain_theme.utils.search_builder import SearchIndexBuilder
-from sphinx_bluebrain_theme.utils.navutils import Page
+from obi_sphinx_theme.utils.search_builder import SearchIndexBuilder
+from obi_sphinx_theme.utils.navutils import Page
 
 
 logger = sphinx.util.logging.getLogger(__name__)

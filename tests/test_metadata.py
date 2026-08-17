@@ -9,7 +9,7 @@ import tempfile
 
 import pytest  # pylint: disable=unused-import
 
-from sphinx_bluebrain_theme.utils import metadata
+from obi_sphinx_theme.utils import metadata
 
 
 @contextmanager
@@ -107,7 +107,7 @@ def test_get_metadata_from_distribution():
 
     The package itself must be installed in the virtualenv.
     """
-    result = metadata.get_metadata_from_distribution("sphinx-bluebrain-theme")
+    result = metadata.get_metadata_from_distribution("obi-sphinx-theme")
     assert set(result) == {
         "contributors",
         "description",
@@ -122,12 +122,12 @@ def test_get_metadata_from_distribution():
     # ignore version because it can change
     del result["version"]
     assert result == {
-        "name": "sphinx-bluebrain-theme",
-        "description": "Blue Brain Project theme for Sphinx",
-        "homepage": "https://github.com/BlueBrain/sphinx-bluebrain-theme",
+        "name": "obi-sphinx-theme",
+        "description": "Open Brain Institute theme for Sphinx",
+        "homepage": "https://github.com/openbraininstitute/obi-sphinx-theme",
         "license": "MIT License",
-        "maintainers": "Blue Brain Project, EPFL",
-        "repository": "https://github.com/BlueBrain/sphinx-bluebrain-theme",
-        "issuesurl": "https://github.com/BlueBrain/sphinx-bluebrain-theme/issues",
+        "maintainers": "Open Brain Institute",
+        "repository": "https://github.com/openbraininstitute/obi-sphinx-theme",
+        "issuesurl": "https://github.com/openbraininstitute/obi-sphinx-theme/issues",
         "contributors": None,
     }

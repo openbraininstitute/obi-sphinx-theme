@@ -14,7 +14,7 @@ try:
 except ImportError:
     from HTMLParser import HTMLParser
 
-from sphinx_bluebrain_theme.utils.navutils import Nav, Page
+from obi_sphinx_theme.utils.navutils import Nav, Page
 
 
 # pylint: disable=abstract-method
