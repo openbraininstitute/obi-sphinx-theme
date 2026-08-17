@@ -1,3 +1,10 @@
+[build-system]
+requires = ["setuptools>=80", "setuptools-scm>=9.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+local_scheme = "no-local-version"
+
 [tool.black]
 exclude = '''
 /(
@@ -12,7 +19,7 @@ exclude = '''
   | build/
   | dist/
 
-  # Sphinx BlueBrain theme specific
+  # OBI Sphinx theme specific
   | mkdocs-material/
   | venv/
 

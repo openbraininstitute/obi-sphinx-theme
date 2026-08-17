@@ -1,2 +1,2 @@
-setuptools_scm
+setuptools-scm>=9.2,<11
 obi-sphinx-theme

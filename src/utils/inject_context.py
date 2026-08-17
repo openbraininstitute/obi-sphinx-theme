@@ -9,7 +9,6 @@ import sphinx.util.logging
 from obi_sphinx_theme.utils.search_builder import SearchIndexBuilder
 from obi_sphinx_theme.utils.navutils import Page
 
-
 logger = sphinx.util.logging.getLogger(__name__)
 
 
@@ -126,9 +125,11 @@ def build_config(con):
             "language": lang,
             # note we use 'assets/' below since the urls use the url filter
             # which will automatically clean up and convert '_static/'
-            "logo": "assets/" + (con["logo"] or con["theme_logo"])
-            if con["logo"] or con["theme_logo"]
-            else {"icon": con["theme_logo_icon"]},
+            "logo": (
+                "assets/" + (con["logo"] or con["theme_logo"])
+                if con["logo"] or con["theme_logo"]
+                else {"icon": con["theme_logo_icon"]}
+            ),
             "favicon": "assets/" + con["favicon"] if con["favicon"] else "",
         },
         "repo_url": con["theme_repo_url"],

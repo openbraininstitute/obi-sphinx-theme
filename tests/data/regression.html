@@ -45,7 +45,7 @@
 
     
       
-        <title>Sample - Sphinx BlueBrain Theme</title>
+        <title>Sample - OBI Sphinx Theme</title>
       
     
     
@@ -110,7 +110,7 @@
       <!-- Link to home -->
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://www.epfl.ch/"
-            title="Sphinx BlueBrain Theme"
+            title="OBI Sphinx Theme"
             class="md-header-nav__button md-logo">
           
             <img src="_static/images/epfl-logo-new.svg" width="24" height="24" />
@@ -144,17 +144,17 @@
           
           <span class="md-header-nav__topic">
             <a href="index.html"
-                title="Sphinx BlueBrain Theme">
+                title="OBI Sphinx Theme">
             <span class="md-header-nav__prefix">
             Blue Brain</span> &ndash;
-            Sphinx BlueBrain Theme<span class="md-header-nav__version">
+            OBI Sphinx Theme<span class="md-header-nav__version">
             REGRESSION-TEST</span></a>
           </span>
           <span class="md-header-nav__topic">
             <a href="" title="Sample">
             <span class="md-header-nav__prefix">
             Blue Brain</span> &ndash;
-            Sphinx BlueBrain Theme &ndash;
+            OBI Sphinx Theme &ndash;
             Sample<span class="md-header-nav__version">
             REGRESSION-TEST</span></a>
           </span>
@@ -238,12 +238,12 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://www.epfl.ch/" title="Sphinx BlueBrain Theme" class="md-nav__button md-logo">
+    <a href="https://www.epfl.ch/" title="OBI Sphinx Theme" class="md-nav__button md-logo">
       
         <img src="_static/images/epfl-logo-new.svg" width="48" height="48">
       
     </a>
-    Sphinx BlueBrain Theme
+    OBI Sphinx Theme
   </label>
   
     <div class="md-nav__source">
@@ -845,7 +845,7 @@ Here is some sample inline code: <span class="na">:py3:</span><span class="nv">`
 </section>
 <section id="code-blocks">
 <h3>Code blocks<a class="headerlink" href="#code-blocks" title="Link to this heading">¶</a></h3>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="hll"><span class="linenos">2</span>   <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
 </span></pre></div>
 </div>
@@ -867,7 +867,7 @@ Here is some sample inline code: <span class="na">:py3:</span><span class="nv">`
 can be entered directly or included from a file.</p>
 <div class="superfences-tabs docutils container">
 <input checked="checked" id="__tab_1_1" name="__tab_1" type="radio"></input><label for="__tab_1_1">Python</label><div class="superfences-content docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 </pre></div>
 </div>
 </div>
@@ -877,18 +877,18 @@ can be entered directly or included from a file.</p>
 </div>
 </div>
 <input id="__tab_1_3" name="__tab_1" type="radio"></input><label for="__tab_1_3">From file</label><div class="superfences-content docutils container">
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is a sample for the documentation.&quot;&quot;&quot;</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="sd">"""This is a sample for the documentation."""</span>
 
 
-<span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span>
 
 
-<span class="k">def</span> <span class="nf">halve</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">halve</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span>
 
 
-<span class="k">def</span> <span class="nf">list_of_three</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_of_three</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
 </pre></div>
 </div>
@@ -1319,9 +1319,12 @@ Embed existing HTML files (such as Doxygen output) in generated pages.
 <section id="images">
 <h3>Images<a class="headerlink" href="#images" title="Link to this heading">¶</a></h3>
 <p>Embed an image with optional alignment.</p>
-<a class="reference internal image-reference" href="_images/epfl-logo-new.svg"><img alt="_images/epfl-logo-new.svg" class="align-left" src="_images/epfl-logo-new.svg" width="25%" /></a>
-<a class="reference internal image-reference" href="_images/epfl-logo-new.svg"><img alt="_images/epfl-logo-new.svg" class="align-center" src="_images/epfl-logo-new.svg" width="25%" /></a>
-<a class="reference internal image-reference" href="_images/epfl-logo-new.svg"><img alt="_images/epfl-logo-new.svg" class="align-right" src="_images/epfl-logo-new.svg" width="25%" /></a>
+<a class="reference internal image-reference" href="_images/epfl-logo-new.svg"><img alt="_images/epfl-logo-new.svg" class="align-left" src="_images/epfl-logo-new.svg" style="width: 25%;" />
+</a>
+<a class="reference internal image-reference" href="_images/epfl-logo-new.svg"><img alt="_images/epfl-logo-new.svg" class="align-center" src="_images/epfl-logo-new.svg" style="width: 25%;" />
+</a>
+<a class="reference internal image-reference" href="_images/epfl-logo-new.svg"><img alt="_images/epfl-logo-new.svg" class="align-right" src="_images/epfl-logo-new.svg" style="width: 25%;" />
+</a>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Images</span>
 <span class="gh">~~~~~~</span>
 
@@ -1393,7 +1396,7 @@ Embed an image with optional alignment.
         
         
           <div class="md-footer-copyright__highlight">
-            &copy; Blue Brain Project/EPFL 2005-2024. All rights reserved.
+            &copy; Blue Brain Project/EPFL 2005-2026. All rights reserved.
           </div>
         
         
@@ -1425,12 +1428,12 @@ Embed an image with optional alignment.
     </div>
   </div>
 </footer>
-      
+
     </div>
 
-    <script src="_static/documentation_options.js?v=1c1e9534"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=1"></script>
+    <script src="_static/documentation_options.js?v=e973e2ea"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"></script>
 <script src="_static/javascripts/theme.js"></script>
 <script src="_static/javascripts/utils.js"></script>

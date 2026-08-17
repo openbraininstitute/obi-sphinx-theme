@@ -1,4 +1,5 @@
 """obi_sphinx_theme package."""
+
 from os import path
 
 from obi_sphinx_theme import utils

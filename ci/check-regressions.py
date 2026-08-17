@@ -7,13 +7,9 @@ import re
 import sys
 from pathlib import Path
 
-import sphinx
-
 
 def _get_expected_path():
-    if sphinx.version_info < (7, 2):
-        # sphinx 7.2.0 dropped Python 3.8 support
-        return Path("tests/data/regression_sphinx_7.1.html")
+    """Return the regression fixture for the supported Sphinx versions."""
     return Path("tests/data/regression.html")
 
 
@@ -36,9 +32,14 @@ def diff_contents():
     """Check the contents to see if they match.
 
     Note: We have to do this manually so we can ignore certain changes, like
-    the cache busting appends that are done for static files
+    cache-busting suffixes, generated copyright years, and other dynamic values.
     """
-    pattern = re.compile(r"\?v=[0-9A-Fa-f]*")
+    cache_busting = re.compile(r"\?v=[0-9A-Fa-f]*")
+    copyright_year = re.compile(r"2005-\d{4}")
+
+    def normalize(line):
+        line = cache_busting.sub("", line)
+        return copyright_year.sub("2005-YYYY", line)
 
     expected = _get_expected_path()
     new = Path("doc/build/html/regression.html")
@@ -53,10 +54,7 @@ def diff_contents():
         itertools.zip_longest(expected_lines, new_lines)
     ):
         expected_line, new_line = expected_line.strip(), new_line.strip()
-        if expected_line == new_line:
-            continue
-
-        if pattern.sub("", new_line) == pattern.sub("", expected_line):
+        if normalize(expected_line) == normalize(new_line):
             continue
 
         print(f"on line {i}, `{expected_line}` != `{new_line}`")

@@ -79,9 +79,6 @@ Copyright (c) 2020-2024 Blue Brain Project/EPFL
              :alt: documentation status
 
 .. substitutions
-.. |changelog| replace:: changelog_
-.. _changelog: CHANGELOG.rst
-.. |usage| replace:: `usage guide <usage_>`_
-.. _usage: doc/source/usage.rst
-.. |sample| replace:: `samples <sample_>`_
-.. _sample: doc/source/sample.rst
+.. |changelog| replace:: `changelog <CHANGELOG.rst>`__
+.. |usage| replace:: `usage guide <doc/source/usage.rst>`__
+.. |sample| replace:: `samples <doc/source/sample.rst>`__

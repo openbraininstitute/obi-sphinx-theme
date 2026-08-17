@@ -1,6 +1,7 @@
 """
 Test for the conversion of files.
 """
+
 from collections import defaultdict
 
 import pytest  # pylint: disable=unused-import
