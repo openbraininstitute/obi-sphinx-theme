@@ -1,6 +1,16 @@
 Changelog
 =========
 
+1.0.0
+-----
+
+- |changed| Rebrand the theme for the Open Brain Institute.
+- |added| Add the OBI logo, updated header/footer branding, and responsive header layout.
+- |added| Add a Podman Read the Docs preview workflow with warnings treated as errors.
+- |changed| Synchronize documentation, regression fixtures, CSS palette, and package tooling.
+- |removed| Remove legacy version-check configuration and rename the internal context cleanup helper.
+- |changed| Reduce tox dependency scope and remove broken README badges.
+
 0.4.4
 -----
 - |fixed| Use summary to set metadata description
