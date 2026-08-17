@@ -401,15 +401,15 @@ Images
 
 Embed an image with optional alignment.
 
-.. image:: _images/epfl-logo-new.svg
+.. image:: _images/obi-logo.svg
    :width: 25%
    :align: left
 
-.. image:: _images/epfl-logo-new.svg
+.. image:: _images/obi-logo.svg
    :width: 25%
    :align: center
 
-.. image:: _images/epfl-logo-new.svg
+.. image:: _images/obi-logo.svg
    :width: 25%
    :align: right
 

@@ -545,13 +545,6 @@ pre, code {
 h1, h2, h3, h4, h5, h6, .md-header-nav__title, .md-footer-copyright__company, .md-hero__inner {
   font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.documentation-homepage-icon {
-  font-size: 25px;
-  line-height: 1;
-  margin: .2rem 0;
-  padding: .4rem 0;
-}
-
 @media only screen and (max-width: 76.1875em) {
   /* leave space for right side-bar so they do not overlap */
   .md-content__inner {
