@@ -1,9 +1,14 @@
 """Utilities for the translation of file contents from mkdocs-material to Sphinx."""
 
+import re
 import shutil
 from collections import defaultdict
 
 from mkdocs2sphinx.clear_blocks import remove_blocks
+
+_SOURCE_MAP_COMMENT_RE = re.compile(
+    r"^[ \t]*//# sourceMappingURL=.*(?:\r?\n|$)", re.MULTILINE
+)
 
 
 def copy_source(source_path, output_path, ignore_on_copy):
@@ -111,6 +116,8 @@ def convert_files(path, block_list, replacement_map, license_text, files_no_lice
         file_contents = fl.read_text(encoding="utf-8")
         file_contents = remove_blocks(file_contents, block_list)
         file_contents = do_replacements(file_contents, replacement_map, stats)
+        if ext == ".js":
+            file_contents = _SOURCE_MAP_COMMENT_RE.sub("", file_contents)
 
         if fl.name not in files_no_license:
             file_contents = prepend_license(license_text, file_contents, fl.suffix)

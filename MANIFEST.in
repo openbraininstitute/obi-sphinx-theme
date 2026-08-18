@@ -2,6 +2,7 @@ graft obi_sphinx_theme
 
 prune src
 prune mkdocs2sphinx
+prune mkdocs-material
 prune tests
 prune doc
 
