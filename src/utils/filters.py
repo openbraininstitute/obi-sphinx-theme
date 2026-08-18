@@ -1,6 +1,7 @@
 """This module contains custom filters for the translation from mkdocs to sphinx."""
 
 from jinja2 import pass_context
+from markupsafe import Markup, escape
 
 
 def add_filters(app):
@@ -10,6 +11,7 @@ def add_filters(app):
         app: The Sphinx application.
     """
     app.builder.templates.environment.filters["url"] = url_filter
+    app.builder.templates.environment.filters["script_tag"] = script_tag
 
 
 @pass_context
@@ -31,3 +33,8 @@ def url_filter(context, path):
         path = context["pathto"](path, 1)
 
     return path
+
+
+def script_tag(path):
+    """Render a JavaScript path as a safe HTML script element."""
+    return Markup(f'<script src="{escape(path)}"></script>')

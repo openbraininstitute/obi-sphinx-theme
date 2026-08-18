@@ -14,6 +14,17 @@ from sphinx.util.fileutil import copy_asset_file
 
 from obi_sphinx_theme.utils._importlib import resources as importlib_resources
 
+_SEARCH_CONFIG = {
+    "lang": ["en"],
+    "separator": r"[\s\-]+",
+    "pipeline": ["stopWordFilter"],
+    "fields": {
+        "title": {"boost": 1e3},
+        "text": {"boost": 1e0},
+        "tags": {"boost": 1e6},
+    },
+}
+
 
 class IndexEntry:
     """Holds the data for each entry in the search index."""
@@ -23,7 +34,7 @@ class IndexEntry:
     def __init__(self, location="", title=""):
         """Initialize the index entry."""
         self.location = location
-        self.title = title
+        self.title = title or ""
         self.text_list = []
 
     @property
@@ -84,7 +95,8 @@ class SearchIndexBuilder(HTMLParser):
         The dumped json is used for the search index build.
         """
         return json.dumps(
-            {"docs": [e.as_dict() for e in self._entries], "config": {}}, sort_keys=True
+            {"docs": [e.as_dict() for e in self._entries], "config": _SEARCH_CONFIG},
+            sort_keys=True,
         )
 
     def handle_starttag(self, tag, attrs):
@@ -131,9 +143,13 @@ class SearchIndexBuilder(HTMLParser):
 def copy_search_index_json(app, exc):
     """Create and copy the search_index.json file."""
     if app.builder.format == "html" and not exc:
-        output = os.path.join(app.builder.outdir, "_static/search")
         path = importlib_resources.files("obi_sphinx_theme")
         with importlib_resources.as_file(
             path / "static/search/search_index.json_t"
         ) as file_:
-            copy_asset_file(str(file_), output, context=app.builder.globalcontext)
+            for output in (
+                os.path.join(app.builder.outdir, "_static/search"),
+                os.path.join(app.builder.outdir, "search"),
+            ):
+                os.makedirs(output, exist_ok=True)
+                copy_asset_file(str(file_), output, context=app.builder.globalcontext)

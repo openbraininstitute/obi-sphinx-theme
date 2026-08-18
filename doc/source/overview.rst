@@ -2,30 +2,33 @@ Methodology overview
 ====================
 
 An overview of the methodology applied to create the OBI Sphinx Theme is
-given below:
+given below. The upstream Material source is the ``mkdocs-material`` submodule
+pinned to Material for MkDocs 9.7.7.
 
 #. User clones ``obi-sphinx-theme`` git repository::
 
       git clone --recursive https://github.com/openbraininstitute/obi-sphinx-theme.git
 
-#. User runs ``tox`` tox environment::
+#. User runs the ``tox`` environment, or invokes the converter directly::
 
       tox
+      python translate_templates.py
 
-#. This environment runs ``translate_templates.py``, which does the following:
+#. ``translate_templates.py`` copies the generated theme templates from
+   :file:`mkdocs-material/material/templates` into
+   :file:`obi_sphinx_theme`. MkDocs-only files at the template root and the
+   integrations directory are excluded.
+#. It applies conversion rules to files with ``.html``, ``.css``, ``.js``, and
+   ``_t`` extensions:
 
-   #. Copies required source files from ``mkdocs-material`` theme :file:`src`
-      directory.
-   #. Applies conversion rules to some files (``.html``, ``.css``, ``.js``, and
-      files with extensions ending in ``_t``). These rules are:
+   #. Clears the configured Jinja ``source``, ``disqus``, and ``analytics``
+      blocks while preserving their block tags.
+   #. Applies the configured string replacements. Material 9.7.7's
+      root-relative ``.icons/`` includes and URL-style ``assets/`` references
+      are retained for the Sphinx URL filter.
+   #. Prepends the Material license to converted files when appropriate and
+      writes the upstream license to :file:`MATERIAL-LICENSE.txt`.
 
-      #. Clears specified Jinja ``blocks`` of content.
-      #. Replaces specified strings within the source files with their
-         replacement values.
-      #. Prepends the ``mkdocs-material`` license to files which have had it
-         removed (due to minification). Specified files are skipped.
-
-   #. Copies additional source files for the theme from the :file:`src`
-      directory.
-   #. Renames the :file:`assets` directory to :file:`static` which is required
-      by Sphinx.
+#. It overlays the local Sphinx templates and support files from :file:`src`.
+#. It renames the copied :file:`assets` directory to :file:`static`, as required
+   by Sphinx.

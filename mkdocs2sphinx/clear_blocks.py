@@ -2,32 +2,25 @@
 
 import re
 
+_BLOCK_TAG_RE = re.compile(r"{%\s*[-+]?\s*(block|endblock)\b([^%]*?)\s*[-+]?%}")
+
+
+def _block_name(match):
+    """Extract the optional block name from a Jinja block tag."""
+    arguments = match.group(2).strip()
+    return arguments.split(maxsplit=1)[0] if arguments else None
+
 
 def build_block_list(src_text):
-    """Constructs a list of 'block'/'endblock' matches, ordered by location within the source text.
-
-    Args:
-        src_text (str): The string to construct the match list from.
-
-    Returns:
-        list: A list of 'block' and 'endblock' regex matches ordered by their
-        location in the ``src_text``.
-    """
-    # make these non-greedy to account for situation where there are two
-    # blocks immediately adjacent
-    start_matches = re.finditer(r"{% block (.*?) %}", src_text)
-    end_matches = re.finditer(r"{% endblock\s*(.*?) %}", src_text)
-
-    match_list = [
-        {"type": t, "match": m, "block_name": m.groups()[0] or None}
-        for t, it in zip(("block", "endblock"), (start_matches, end_matches))
-        for m in it
+    """Construct a list of Jinja block matches ordered by source location."""
+    return [
+        {
+            "type": match.group(1),
+            "match": match,
+            "block_name": _block_name(match),
+        }
+        for match in _BLOCK_TAG_RE.finditer(src_text)
     ]
-
-    # sort by location in the text
-    match_list.sort(key=lambda v: v["match"].start())
-
-    return match_list
 
 
 def remove_block(src_text, block_name_to_remove, keep_nested=True):

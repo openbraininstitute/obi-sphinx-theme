@@ -109,3 +109,24 @@ And even more text
     assert tx == """Outer text
 {% block outer %}{% block inner %}{% endblock inner %}{% endblock %}
 """
+
+
+def test_block_list_with_jinja_whitespace_controls():
+    """Block parsing supports Jinja whitespace controls and modifiers."""
+    text = """{%- block outer scoped -%}
+{%+ block inner required +%}
+Inner text
+{%- endblock inner -%}
+{%- endblock outer -%}"""
+
+    block_list = cb.build_block_list(text)
+
+    assert [(item["type"], item["block_name"]) for item in block_list] == [
+        ("block", "outer"),
+        ("block", "inner"),
+        ("endblock", "inner"),
+        ("endblock", "outer"),
+    ]
+    assert cb.remove_block(text, "outer", keep_nested=False) == (
+        "{%- block outer scoped -%}{%- endblock outer -%}"
+    )
