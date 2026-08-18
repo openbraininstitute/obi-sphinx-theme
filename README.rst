@@ -1,7 +1,7 @@
 OBI Sphinx Theme
 ================
 
-|license| |black|
+|build_status| |license| |black|
 
 Introduction
 ------------
@@ -33,8 +33,8 @@ fall under the MIT license.
 
 The theme incorporates third party components which are listed below, along with their relevant licenses:
 
-`Material for MkDocs theme <https://squidfunk.github.io/mkdocs-material/>`__
-   MIT License, see `the license <https://github.com/squidfunk/mkdocs-material/blob/master/LICENSE>`__.
+`Material for MkDocs 9.7.7 theme <https://squidfunk.github.io/mkdocs-material/>`__
+   MIT License, see `the license <https://github.com/squidfunk/mkdocs-material/blob/9.7.7/LICENSE>`__.
 `Open Sans font <https://fonts.google.com/specimen/Open+Sans>`__
    Apache License Version 2.0, see `the license <https://github.com/BlueBrain/sphinx-bluebrain-theme/blob/master/src/assets/fonts/open-sans/LICENSE.txt>`__.
 `Titillium Web font <https://fonts.google.com/specimen/Titillium+Web>`__
@@ -65,6 +65,10 @@ Copyright (c) 2020-2024 Blue Brain Project/EPFL
 
 Copyright (c) 2025-2026 Open Brain Institute
 
+
+.. |build_status| image:: https://github.com/openbraininstitute/obi-sphinx-theme/actions/workflows/run-tox.yml/badge.svg
+                     :target: https://github.com/openbraininstitute/obi-sphinx-theme/actions/workflows/run-tox.yml
+                     :alt: Build Status
 
 .. |license| image:: https://img.shields.io/pypi/l/obi-sphinx-theme
                 :target: https://github.com/openbraininstitute/obi-sphinx-theme/blob/main/LICENSE.txt

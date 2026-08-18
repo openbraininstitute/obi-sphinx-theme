@@ -15,16 +15,20 @@ def _get_expected_path():
 
 def check_empty_search_index_json():
     """Ibid."""
-    path = Path("doc/build/html/_static/search/search_index.json")
-    if not path.exists():
-        print(f"{path} does not exist")
-        return False
-    with path.open(encoding="utf8") as fd:
-        try:
-            json.load(fd)
-        except json.JSONDecodeError:
-            print(f"Could not decode json for {path}")
-            raise
+    paths = (
+        Path("doc/build/html/_static/search/search_index.json"),
+        Path("doc/build/html/search/search_index.json"),
+    )
+    for path in paths:
+        if not path.exists():
+            print(f"{path} does not exist")
+            return False
+        with path.open(encoding="utf8") as fd:
+            try:
+                json.load(fd)
+            except json.JSONDecodeError:
+                print(f"Could not decode json for {path}")
+                raise
     return True
 
 

@@ -4,7 +4,7 @@ Test for the custom filters.
 
 from sphinx.application import Sphinx
 import pytest  # pylint: disable=unused-import
-from obi_sphinx_theme.utils.filters import add_filters, url_filter
+from obi_sphinx_theme.utils.filters import add_filters, script_tag, url_filter
 
 
 def test_add_filter():
@@ -15,6 +15,7 @@ def test_add_filter():
     add_filters(app)
     # pylint: disable=comparison-with-callable
     assert app.builder.templates.environment.filters["url"] == url_filter
+    assert app.builder.templates.environment.filters["script_tag"] == script_tag
 
 
 def test_url_filter():
@@ -36,3 +37,10 @@ def test_url_filter():
     # test a url which should be converted
     url = url_filter(context, url_assets)
     assert url == url_static
+
+
+def test_script_tag():
+    """Test rendering an extra JavaScript entry as a script element."""
+    assert (
+        script_tag("assets/example.js") == '<script src="assets/example.js"></script>'
+    )

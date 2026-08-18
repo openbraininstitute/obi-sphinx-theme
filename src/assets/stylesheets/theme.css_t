@@ -380,7 +380,7 @@ html .md-typeset .superfences-tabs > label:hover {
 }
 
 /* center the logo in the 48px header without changing the table layout */
-.md-header-nav__button.md-logo {
+.md-header__button.md-logo {
   display: flex;
   align-items: center;
   height: 2.4rem;
@@ -388,7 +388,7 @@ html .md-typeset .superfences-tabs > label:hover {
   padding: 0;
 }
 
-.md-header-nav__button.md-logo img {
+.md-header__button.md-logo img {
   height: 1.25rem;
   width: auto;
   margin: 0;
@@ -397,7 +397,7 @@ html .md-typeset .superfences-tabs > label:hover {
 
 /* Material hides the desktop logo through a rule in the inherited stylesheet. */
 @media only screen and (max-width: 76.1875em) {
-  .md-header-nav__button.md-logo {
+  .md-header__button.md-logo {
     display: none;
   }
 }
@@ -416,22 +416,58 @@ html .md-nav--primary .md-nav__title--site .md-nav__button {
 }*/
 
 /* footer navigation and typography */
-body[data-md-color-primary="blue"] .md-footer-nav {
+.md-footer {
   background-color: #f5f8fa;
 }
 
 .md-typeset h1,
-.md-footer-nav,
-.md-footer-nav__direction {
+.md-footer__inner,
+.md-footer__direction {
   color: #6b7280;
 }
 
-.md-footer-nav__direction {
-  font-style: italic;
+.md-footer__link {
+  align-items: center;
+  margin-block: 0;
+  padding: 0.25rem 0;
 }
 
-.md-header-nav__title,
-.md-header-nav__prefix {
+.md-footer__link--next {
+  text-align: right;
+}
+
+.md-footer__title {
+  padding: 0 0.5rem;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
+.md-footer__direction {
+  display: block;
+  position: static;
+  margin: 0;
+  padding: 0;
+  font-size: 0.65rem;
+  font-style: italic;
+  line-height: 1rem;
+}
+
+.md-footer__button {
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+@media only screen and (min-width: 45em) {
+  .md-footer__link {
+    flex: 0 0 25%;
+    width: 25%;
+    max-width: 25%;
+  }
+}
+
+.md-header__title,
+.md-header__prefix {
   color: #f5f8fa;
   font-size: 1.2rem;
 }
@@ -441,7 +477,7 @@ body .md-nav {
 }
 
 /* specific style for the header version */
-.md-header-nav__version {
+.md-header__version {
   color: rgba(245, 248, 250, 0.7);
   font-size: 0.9rem;
   padding-left: 0.3rem;
@@ -451,6 +487,7 @@ body .md-nav {
 .md-footer-copyright {
   color: #f5f8fa;
   font-size: 0.7rem;
+  padding-bottom: 0;
 }
 
 .md-footer-copyright__highlight,
@@ -542,7 +579,7 @@ pre, code, kbd {
 pre, code {
   font-variant-ligatures: none;
 }
-h1, h2, h3, h4, h5, h6, .md-header-nav__title, .md-footer-copyright__company, .md-hero__inner {
+h1, h2, h3, h4, h5, h6, .md-header__title, .md-footer-copyright__company, .md-hero__inner {
   font-family: "Titillium Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 @media only screen and (max-width: 76.1875em) {

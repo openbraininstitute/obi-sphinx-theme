@@ -24,90 +24,107 @@
 #}
 
 <!-- Application header -->
-<header class="md-header" data-md-component="header">
+{% set features = config.theme.features or [] %}
+{% set class = "md-header" %}
+{% if "navigation.tabs.sticky" in features %}
+  {% set class = class ~ " md-header--shadow md-header--lifted" %}
+{% elif "navigation.tabs" not in features %}
+  {% set class = class ~ " md-header--shadow" %}
+{% endif %}
+<header class="{{ class }}" data-md-component="header">
 
   <!-- Top-level navigation -->
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
 
-      <!-- Link to home -->
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
-            title="{{ config.site_name }}"
-            class="md-header-nav__button md-logo">
-          {% if config.theme.logo.icon %}
-            <i class="md-icon">{{ config.theme.logo.icon }}</i>
-          {% else %}
-            <img src="{{ config.theme.logo | url }}" width="24" height="24" />
-          {% endif %}
-        </a>
-      </div>
+    <!-- Link to home -->
+    <a href="{{ config.extra.homepage | d(config.site_url | d(nav.homepage.url, true), true) | url }}"
+        title="{{ config.site_name | e }}"
+        class="md-header__button md-logo"
+        aria-label="{{ config.site_name }}"
+        data-md-component="logo">
+      {% include "partials/logo.html" %}
+    </a>
 
-      <!-- Button to toggle drawer -->
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button"
-            for="__drawer"></label>
-      </div>
+    <!-- Button to toggle drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      {% set icon = config.theme.icon.menu or "material/menu" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
+    </label>
 
-      <!-- Header title -->
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title"
-            data-md-component="title">
-          {# begin edits #}
-          {% if config.site_name == page.title %}
-          <a href="{{ config.title_url | default(nav.homepage.url, true) | url }}"
-              title="{{ config.site_name }}">
-          {% if theme_title_prefix and not theme_use_original_style %}<span class="md-header-nav__prefix">
-          {{ theme_title_prefix }}</span> &ndash;{% endif %}
-          {{ config.site_name }}
-          {%- if version and not theme_use_original_style %}<span class="md-header-nav__version">
-          {{ version }}</span>{% endif -%}
-          </a>
-        {% else %}
-          <span class="md-header-nav__topic">
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        {% if config.site_name == page.title %}
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             <a href="{{ config.title_url | default(nav.homepage.url, true) | url }}"
                 title="{{ config.site_name }}">
-            {% if theme_title_prefix and not theme_use_original_style %}<span class="md-header-nav__prefix">
+            {% if theme_title_prefix and not theme_use_original_style %}<span class="md-header__prefix">
             {{ theme_title_prefix }}</span> &ndash;{% endif %}
             {{ config.site_name }}
-            {%- if version and not theme_use_original_style %}<span class="md-header-nav__version">
+            {%- if version and not theme_use_original_style %}<span class="md-header__version">
             {{ version }}</span>{% endif -%}
             </a>
           </span>
-          <span class="md-header-nav__topic">
+        </div>
+        {% else %}
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            <a href="{{ config.title_url | default(nav.homepage.url, true) | url }}"
+                title="{{ config.site_name }}">
+            {% if theme_title_prefix and not theme_use_original_style %}<span class="md-header__prefix">
+            {{ theme_title_prefix }}</span> &ndash;{% endif %}
+            {{ config.site_name }}
+            {%- if version and not theme_use_original_style %}<span class="md-header__version">
+            {{ version }}</span>{% endif -%}
+            </a>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
             <a href="{{ '' | url }}" title="{{ page.title }}">
-            {% if theme_title_prefix and not theme_use_original_style %}<span class="md-header-nav__prefix">
+            {% if theme_title_prefix and not theme_use_original_style %}<span class="md-header__prefix">
             {{ theme_title_prefix }}</span> &ndash;{% endif %}
             {% if not theme_use_original_style %}{{ config.site_name }} &ndash;{% endif %}
             {{ page.title }}
-            {%- if version and not theme_use_original_style %}<span class="md-header-nav__version">
+            {%- if version and not theme_use_original_style %}<span class="md-header__version">
             {{ version }}</span>{% endif -%}
             </a>
           </span>
-        {% endif %}
-        {# end edits #}
         </div>
-      </div>
-
-      <!-- Button to open search dialogue -->
-      <div class="md-flex__cell md-flex__cell--shrink">
-        {% if "search" in config["plugins"] %}
-          <label class="md-icon md-icon--search md-header-nav__button"
-              for="__search"></label>
-
-          <!-- Search interface -->
-          {% include "partials/search.html" %}
         {% endif %}
       </div>
-
-      <!-- Repository containing source -->
-      {% if config.repo_url %}
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            {% include "partials/source.html" %}
-          </div>
-        </div>
-      {% endif %}
     </div>
+
+    {% if config.theme.palette and not config.theme.palette is mapping %}
+      {% include "partials/palette.html" %}
+    {% endif %}
+    {% if config.theme.palette and not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
+    {% if config.extra.alternate %}
+      {% include "partials/alternate.html" %}
+    {% endif %}
+
+    <!-- Button to open search dialogue -->
+    {% if "material/search" in config.plugins or "search" in config.plugins %}
+      <label class="md-header__button md-icon" for="__search">
+        {% set icon = config.theme.icon.search or "material/magnify" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </label>
+
+      <!-- Search interface -->
+      {% include "partials/search.html" %}
+    {% endif %}
+
+    <!-- Repository containing source -->
+    {% if config.repo_url %}
+      <div class="md-header__source">
+        {% include "partials/source.html" %}
+      </div>
+    {% endif %}
   </nav>
+  {% if "navigation.tabs.sticky" in features and "navigation.tabs" in features %}
+    {% include "partials/tabs.html" %}
+  {% endif %}
 </header>

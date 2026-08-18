@@ -17,14 +17,11 @@ def _ignore_on_copy(directory, contents):  # pylint: disable=unused-argument
         list: A list of files to be ignored.
     """
     directory = Path(directory)
-    if directory.name == "material":
+    if directory.name == "templates" and directory.parent.name == "material":
         return ["mkdocs_theme.yml", "main.html", "404.html"]
 
-    if directory.name == "partials":
+    if directory.name == "partials" and directory.parent.name == "templates":
         return ["integrations"]
-
-    if directory.name == "images":
-        return ["favicon.png"]
 
     return []
 
@@ -35,20 +32,21 @@ if __name__ == "__main__":
 
     # this assumes that the mkdocs material theme is in the same directory
     # as this file's parent directory
-    SRC_PATH = PWD_PATH / "mkdocs-material" / "material"
+    SRC_PATH = PWD_PATH / "mkdocs-material" / "material" / "templates"
     OUT_PATH = PWD_PATH / "obi_sphinx_theme"
     copy_source(SRC_PATH, OUT_PATH, _ignore_on_copy)
 
     # convert files from mkdocs to Sphinx
     BLOCK_LIST = ("source", "disqus", "analytics")
-    REPLACEMENT_MAP = {
-        # do general replacements
-        '{% include "assets/': '{% include "static/'
-    }
+    # Material 9.7.7 uses root-relative `.icons/` template includes. Its
+    # `assets/` references are URLs and must remain unchanged for the local
+    # Sphinx URL filter to map them to `_static/`.
+    REPLACEMENT_MAP = {}
 
     # ensure mkdocs-material licenses are included
     LICENSE_PATH = PWD_PATH / "mkdocs-material" / "LICENSE"
     LICENSE_TEXT = LICENSE_PATH.read_text(encoding="utf8").splitlines()
+    shutil.copyfile(LICENSE_PATH, OUT_PATH / "MATERIAL-LICENSE.txt")
     FILES_NOT_NEEDING_LICENSE = {
         "font-awesome.css",  # license information already included
         "material-icons.css",  # license information already included

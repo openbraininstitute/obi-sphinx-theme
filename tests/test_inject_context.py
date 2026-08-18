@@ -147,8 +147,16 @@ linkedin,linkedin.com"""
 
     # check the social output
     social_result = [
-        {"type": "facebook", "link": "facebook.com"},
-        {"type": "linkedin", "link": "linkedin.com"},
+        {
+            "type": "facebook",
+            "icon": "fontawesome/brands/facebook",
+            "link": "facebook.com",
+        },
+        {
+            "type": "linkedin",
+            "icon": "fontawesome/brands/linkedin",
+            "link": "linkedin.com",
+        },
     ]
     assert context["config"]["extra"]["social"] == social_result
 
@@ -180,7 +188,13 @@ def test_build_config_asset_urls():
     assert (
         config["theme"]["favicon"] == "https://www.openbraininstitute.org/favicon.ico"
     )
+    assert not config["theme"]["icon"]
+    assert not config["mdx_configs"]["toc"]
 
     context["logo"] = "https://cdn.example.test/obi-logo.svg"
     config = inject_context.build_config(context)
     assert config["theme"]["logo"] == "https://cdn.example.test/obi-logo.svg"
+
+    context["theme_favicon"] = "images/favicon.png"
+    config = inject_context.build_config(context)
+    assert config["theme"]["favicon"] == "assets/images/favicon.png"

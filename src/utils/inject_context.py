@@ -12,6 +12,23 @@ from obi_sphinx_theme.utils.navutils import Page
 logger = sphinx.util.logging.getLogger(__name__)
 
 
+_SOCIAL_ICON_MAP = {
+    "linkedin-square": "fontawesome/brands/linkedin",
+    "twitter-square": "fontawesome/brands/x-twitter",
+    "youtube": "fontawesome/brands/youtube",
+    "cloud": "fontawesome/brands/bluesky",
+}
+
+
+def _social_icon(value):
+    """Return a Material icon path for a legacy or qualified social type."""
+    if "/" in value:
+        return value
+    return _SOCIAL_ICON_MAP.get(
+        value, f"fontawesome/brands/{value.removesuffix('-square')}"
+    )
+
+
 def build_adjacent_page(data):
     """Builds an adjacent page with the minimum required data."""
     if not data:
@@ -133,11 +150,13 @@ def build_config(con):
             },
             "font": font,
             "language": lang,
+            "icon": {},
             # note we use 'assets/' below since the urls use the url filter
             # which will automatically clean up and convert '_static/'
             "logo": asset_url(logo) if logo else {"icon": con["theme_logo_icon"]},
             "favicon": asset_url(favicon),
         },
+        "mdx_configs": {"toc": {}},
         "repo_url": con["theme_repo_url"],
         "repo_name": con["theme_repo_name"],
         "copyright": con["copyright"],
@@ -209,7 +228,16 @@ def obi_context_cleanup(context):
 
     if isinstance(context["theme_social"], str):
         pairs = [p.split(",") for p in context["theme_social"].strip().split("\n")]
-        social = [{k: v.strip() for k, v in zip(("type", "link"), p)} for p in pairs]
+        social = []
+        for pair in pairs:
+            social_type, link = (value.strip() for value in pair)
+            social.append(
+                {
+                    "type": social_type,
+                    "icon": _social_icon(social_type),
+                    "link": link,
+                }
+            )
         # we need to update the constructed context
         context["config"]["extra"]["social"] = social
 
