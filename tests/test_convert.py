@@ -6,7 +6,7 @@ from collections import defaultdict
 from pathlib import Path
 
 import pytest  # pylint: disable=unused-import
-from mkdocs2sphinx.convert_files import do_replacements, prepend_license
+from mkdocs2sphinx.convert_files import convert_files, do_replacements, prepend_license
 from translate_templates import _ignore_on_copy
 
 
@@ -71,3 +71,28 @@ def test_prepend_license_html_and_javascript():
 
     assert html.startswith("{#\n<!--\n  LICENSE\n-->")
     assert javascript.startswith("/*\n * LICENSE\n */")
+
+
+def test_javascript_source_maps_are_excluded():
+    """Generated JavaScript source maps are not copied into the theme."""
+    javascript_path = Path("material/templates/assets/javascripts")
+    nested_javascript_path = javascript_path / "workers"
+    stylesheet_path = Path("material/templates/assets/stylesheets")
+
+    assert _ignore_on_copy(javascript_path, ["bundle.js.map", "bundle.js"]) == [
+        "bundle.js.map"
+    ]
+    assert _ignore_on_copy(nested_javascript_path, ["search.js.map"]) == [
+        "search.js.map"
+    ]
+    assert not _ignore_on_copy(stylesheet_path, ["main.css.map"])
+
+
+def test_javascript_source_map_comments_are_removed(tmp_path):
+    """Converted JavaScript does not refer to source maps that are not shipped."""
+    script = tmp_path / "theme.js"
+    script.write_text("content\n//# sourceMappingURL=theme.js.map\n", encoding="utf-8")
+
+    convert_files(tmp_path, (), {}, ("LICENSE",), set())
+
+    assert "sourceMappingURL" not in script.read_text(encoding="utf-8")

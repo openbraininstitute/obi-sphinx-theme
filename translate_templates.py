@@ -23,6 +23,16 @@ def _ignore_on_copy(directory, contents):  # pylint: disable=unused-argument
     if directory.name == "partials" and directory.parent.name == "templates":
         return ["integrations"]
 
+    # Source maps are useful while developing Material, but they are not
+    # needed by the generated Sphinx theme and add more than a megabyte to the
+    # JavaScript payload. Keep CSS maps available for stylesheet debugging.
+    parts = directory.parts
+    if any(
+        part == "assets" and next_part == "javascripts"
+        for part, next_part in zip(parts, parts[1:])
+    ):
+        return [item for item in contents if item.endswith(".map")]
+
     return []
 
 

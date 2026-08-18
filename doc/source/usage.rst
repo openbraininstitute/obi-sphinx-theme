@@ -21,6 +21,13 @@ You can then use the theme by specifying::
 
 in the :file:`conf.py` for your documentation.
 
+Browser support
+---------------
+
+The bundled Open Sans and Titillium Web fonts are provided in WOFF2 and WOFF
+formats. The theme targets current browsers; legacy EOT, TrueType, and SVG
+font formats are intentionally not included in the distribution.
+
 Generating tables of contents
 -----------------------------
 
