@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "obi-sphinx-theme"
+version = "2.0.0"
+description = "Open Brain Institute Sphinx theme — a pydata-sphinx-theme wrapper with OBI branding"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Open Brain Institute"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Sphinx",
+    "Framework :: Sphinx :: Theme",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Documentation :: Sphinx",
+]
+dependencies = [
+    "pydata-sphinx-theme>=0.15.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/openbraininstitute/obi-sphinx-theme"
+Repository = "https://github.com/openbraininstitute/obi-sphinx-theme"
+
+[project.entry-points."sphinx.html_themes"]
+obi_sphinx_theme = "obi_sphinx_theme"
+
+[tool.setuptools.packages.find]
+include = ["obi_sphinx_theme*"]
+
+[tool.setuptools.package-data]
+obi_sphinx_theme = [
+    "theme.conf",
+    "*.html",
+    "static/css/*.css",
+    "static/images/*.svg",
+    "static/images/*.ico",
+]
