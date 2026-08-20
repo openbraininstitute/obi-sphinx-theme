@@ -5,7 +5,10 @@ A thin wrapper around pydata-sphinx-theme with OBI brand colors.
 
 from pathlib import Path
 
-__version__ = "2.0.0"
+try:
+    from ._version import version as __version__
+except ImportError:
+    __version__ = "0+unknown"
 
 _THEME_PATH = Path(__file__).parent
 

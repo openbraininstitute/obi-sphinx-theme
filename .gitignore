@@ -2,6 +2,7 @@
 build/
 dist/
 *.egg-info/
+obi_sphinx_theme/_version.py
 
 # Python
 __pycache__/

@@ -1,10 +1,13 @@
 [build-system]
-requires = ["setuptools>=68.0"]
+requires = [
+    "setuptools>=68.0",
+    "setuptools-scm==8.3.1",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "obi-sphinx-theme"
-version = "2.0.0"
+dynamic = ["version"]
 description = "Open Brain Institute Sphinx theme — a pydata-sphinx-theme wrapper with OBI branding"
 readme = "README.md"
 license = {text = "Apache-2.0"}
@@ -42,3 +45,6 @@ obi_sphinx_theme = [
     "static/images/*.svg",
     "static/images/*.ico",
 ]
+
+[tool.setuptools_scm]
+version_file = "obi_sphinx_theme/_version.py"

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0.1
+-----
+
+- Add desktop spacing between the logo and navigation links.
+- Derive the package version from Git release tags during builds.
+
 2.0.0
 -----
 
