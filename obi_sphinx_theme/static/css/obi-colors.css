@@ -150,6 +150,12 @@ html[data-theme="dark"] {
     max-height: 2rem;
 }
 
+@media (min-width: 992px) {
+    .bd-header.navbar .navbar-header-items__center {
+        padding-left: 1.5rem;
+    }
+}
+
 .bd-header.navbar ul.navbar-nav > li.nav-item > .nav-link {
     color: rgba(255, 255, 255, 0.85) !important;
 }
