@@ -2,6 +2,8 @@
 
 A Sphinx theme for [Open Brain Institute](https://openbraininstitute.org) projects.
 
+[![Documentation Status](https://readthedocs.org/projects/obi-sphinx-theme/badge/?version=latest)](https://obi-sphinx-theme.readthedocs.io/en/latest/?badge=latest)
+
 This is a thin wrapper around [pydata-sphinx-theme](https://pydata-sphinx-theme.readthedocs.io/) that applies the OBI color palette:
 
 | Role | Color |
