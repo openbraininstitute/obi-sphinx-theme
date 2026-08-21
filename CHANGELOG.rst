@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0.2
+-----
+
+- Fix the color of the ``More`` dropdown navigation label in the top bar.
+
 2.0.1
 -----
 
